@@ -1,0 +1,38 @@
+<div class="row" style="padding: 50px;">
+  <% if @events.count > 0 %>
+    <% @events.each do |event| %>
+      <div class="col-sm-3">
+        <div class="card" style="margin-bottom: 20px;padding: 15px;">
+          <div class="content">
+            <p class="my-1 text-center" style="color:#fff;">
+              <strong><%= event.title %></strong>
+            </p>
+            <p class="my-1 pull-right">
+              Users invited :
+              <%= event.registrations.count %>
+            </p>
+            <p class="my-1 pull-right">
+              Location :
+              <%= event.location %>
+            </p>
+            <p class="my-1 pull-right">
+              Start date :
+              <%= event.start_date.strftime("%v") %>
+            </p>
+            <p class="my-1 pull-right">
+              End date :
+              <%= event.end_date.strftime("%v") %>
+            </p>
+            <p class="my-1 pull-right">
+              Event creator :
+              <%= event.user.username %>
+            </p>
+            <%= link_to "View event", event_path(event), class: "btn btn-block btn-primary" %>
+          </div>
+        </div>
+      </div>
+    <% end %>
+  <% else %>
+    <h1 class="text-center">No events published</h1>
+  <% end %>
+</div>

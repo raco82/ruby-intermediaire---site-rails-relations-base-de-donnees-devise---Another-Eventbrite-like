@@ -1,0 +1,90 @@
+<div class="row mb-4">
+	<div class="col">
+		<div class="card" style="margin-top: 50px;">
+			<div class="card-header">
+				<h5 style="color:#fff;">
+					<strong>
+						<%= @event.title %>
+						<span style="float: right;">Created by
+							<%= @event.user.username %></span>
+					</strong>
+				</h5>
+				<div class="card-body" style="margin-top: 30px;">
+					<div class="row">
+						<div class="col-md-3">
+							<p>Users invited :
+								<span style="color:#fff;"><%= @event.registrations.count %></span>
+							</p>
+						</div>
+						<div class="col-md-3">
+							<p>
+								Location :
+								<span style="color:#fff;"><%= @event.location %></span>
+							</p>
+						</div>
+						<div class="col-md-3">
+							<p>
+								Start date :
+								<span style="color:#fff;"><%= @event.start_date.strftime("%v") %></span>
+							</p>
+						</div>
+						<div class="col-md-3">
+							<p>
+								End date :
+								<span style="color:#fff;"><%= @event.end_date.strftime("%v") %></span>
+							</p>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+<div class="row mb-4">
+	<div class="col">
+		<div class="card" style="margin-top: 50px;">
+			<div class="card-header">
+				<h5 style="color:#fff;">
+					<strong>
+						User Invitations
+					</strong>
+				</h5>
+				<div class="card-body" style="margin-top: 30px;">
+					<div class="row">
+						<table class="table-hover" style="width: 100%">
+							<thead>
+								<tr>
+									<th>Username</th>
+									<th>Email</th>
+									<th>Invitation Status</th>
+									<th></th>
+								</tr>
+							</thead>
+							<tbody>
+								<% all_users.each do |user| %>
+									<tr>
+										<td><%= user.username %></td>
+										<td><%= user.email %></td>
+										<td>
+											<%= is_registered?(user, @event) %>
+										</td>
+										<td>
+											<% if current_user.id == @event.user.id %>
+												<%= form_tag register_path do %>
+												<%= hidden_field_tag "user_id", "#{user.id}" %>
+												<%= submit_tag 'Invite', class: 'btn btn-block btn-primary' %>
+											<% end %>
+										<% end %>
+									</td>
+								</td>
+							</tr>
+						<% end %>
+					</tbody>
+				</table>
+			</div>
+		</div>
+	</div>
+</div>
+</div>
+</div>

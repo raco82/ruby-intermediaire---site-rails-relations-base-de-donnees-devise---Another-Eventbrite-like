@@ -1,0 +1,51 @@
+<div class="container-fluid">
+	<% if !logged_in? %>
+		<div class="row" style="padding: 50px;">
+			<div class="col-md-12">
+				<div class="card card-login col-md-12 ">
+					<div class="card-header">Register</div>
+					<div class="card-body">
+						<%= form_tag '/' do %>
+						<div class="form-group">
+							<label for="username">Username</label>
+							<%= text_field_tag :username, nil, class: 'form-control' %>
+						</div>
+						<div class="form-group">
+							<label for="email">Email address</label>
+							<%= text_field_tag :email, nil, class: 'form-control' %>
+						</div>
+						<div class="form-group">
+							<label for="password">Password</label>
+							<%= password_field_tag :password, nil, class: 'form-control' %>
+						</div>
+						<div class="form-group">
+							<label for="password">Confirm Password</label>
+							<%= password_field_tag :password_confirmation, nil, class: 'form-control' %>
+						</div>
+						<%= submit_tag 'Register', class: 'btn btn-primary btn-block' %>
+					<% end %>
+				</div>
+			</div>
+		</div>
+	</div>
+<% else %>
+
+	<div class="card text-center">
+		<div class="card-block" style="margin-bottom:25px;">
+			<div class="gravatar text-center" style="margin-top: 25px;">
+				<%= gravatar_for current_user, size: 100 %>
+			</div>
+			<h4 class="card-title">
+				<%= current_user.username.capitalize! %>
+			</h4>
+			<p class="card-text">You can post an event and invite users</p>
+			<a href="<%= new_event_path %>" class="btn btn-primary" style="margin-bottom: 20px;">New event</a>
+			<hr>
+			You are registered to
+			<%= pluralize( current_user.registrations.count, 'event' ) %>
+	</ul>
+</div>
+</div>
+
+<% end %>
+</div>

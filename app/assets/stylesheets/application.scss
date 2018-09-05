@@ -1,0 +1,52 @@
+html {
+	height: 100%;
+	width: 100%;
+}
+
+body {
+	padding-top: 54px;
+	height: 100%;
+	width: 100%;
+}
+@media (min-width: 992px) {
+	body {
+		padding-top: 56px;
+	}
+}
+
+.portfolio-item {
+	margin-bottom: 30px;
+}
+
+.flash-messages {
+	margin-top: 30px;
+}
+
+.card-header {
+	background: transparent;
+}
+
+.showcase {
+	background-image: url("https://www.aqualud.com/wp-content/uploads/2017/04/event-1500x660.jpg");
+	/* Set a specific height */
+	height: 500px;
+	/* Create the parallax scrolling effect */
+	background-attachment: fixed;
+	background-position: center;
+	background-repeat: no-repeat;
+	background-size: cover;
+}
+
+.card {
+	border-radius: 5px 5px 5px 5px/25px 25px 25px 5px;
+	overflow: hidden;
+}
+
+#status {
+	padding: 10px;
+	margin: 15px;
+}
+// import scss file
+@import "bootswatch/cyborg/variables";
+@import "bootstrap";
+@import "bootswatch/cyborg/bootswatch";

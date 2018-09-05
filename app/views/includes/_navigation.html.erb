@@ -1,0 +1,73 @@
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+  <div class="container">
+    <%= link_to "ANOTHER EVENTBRITE LIKE", root_path, class: "navbar-brand" %>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarResponsive">
+      <ul class="navbar-nav ml-auto">
+
+        <% if logged_in? %>
+
+          <% unless current_page?(root_path) %>
+            <li class="nav-item">
+              <%= link_to "My events", root_path, class: "nav-link" %>
+            </li>
+          <% end %>
+
+          <li class="nav-item">
+            <%= link_to "All events", events_path, class: "nav-link" %>
+          </li>
+
+          <li class="nav-item">
+            <%= link_to "Create event", new_event_path, class: "nav-link" %>
+          </li>
+
+          <li class="nav-item">
+            <%= link_to "Logout", logout_path, method: :delete, class: "btn btn-md btn-danger" %>
+          </li>
+
+        <% else %>
+
+          <button type="button" class="btn btn-md btn-success" data-toggle="modal" data-target="#Modal">
+            Login
+          </button>
+
+        <% end %>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+<% if !logged_in? %>
+  <!-- Modal -->
+  <%= form_tag login_path do %>
+  <div class="modal fade" id="Modal" tabindex="-1" role="dialog" aria-labelledby="ModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="ModalLabel">Login
+          </h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <div class="form-group">
+            <label for="email">Email address</label>
+            <%= text_field_tag :email, nil, class: 'form-control' %>
+          </div>
+          <div class="form-group">
+            <label for="password">Password</label>
+            <%= password_field_tag :password, nil, class: 'form-control' %>
+          </div>
+          <%= submit_tag 'Log in', class: 'btn btn-primary btn-block' %>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+</div>
+<% end %>
+
+<% end %>

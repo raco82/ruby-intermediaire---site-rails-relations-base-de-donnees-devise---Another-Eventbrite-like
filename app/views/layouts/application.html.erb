@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>ANOTHER EVENTBRITE LIKE</title>
+    <%= csrf_meta_tags %>
+
+    <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+  </head>
+
+  <!-- <%= current_page?(root_path) ? 'showcase' : '' %> -->
+  <body class="showcase">
+
+    <!-- Navigation -->
+    <%= render 'includes/navigation' %>
+
+    <!-- Page Content -->
+    <div class="container" style="height: 100%">
+
+      <div class="flash-messages">
+        <%= render 'includes/messages' %>
+      </div>
+      <!-- Body content -->
+      <%= yield %>
+
+    </div>
+    <!-- /.container -->
+    <!-- Footer -->
+
+  </body>
+</html>
